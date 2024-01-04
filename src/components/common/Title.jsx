@@ -1,10 +1,22 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const Title = () => {
-  return <TitleWrapper></TitleWrapper>;
+const Title = ({ titleName }) => {
+  return (
+    <TitleWrapper>
+      <h3>
+        {titleName.firstText} <span>{titleName.secondText}</span>
+      </h3>
+      <div className="line"></div>
+    </TitleWrapper>
+  );
 };
 
 export default Title;
+
+Title.propTypes = {
+  titleName: PropTypes.object,
+};
 
 const TitleWrapper = styled.div`
   padding: 12px 0;
