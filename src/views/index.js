@@ -5,4 +5,4 @@ export { default as ViewGameAll } from "./game/GameAllPage";
 export { default as ViewGameDetails } from "./game/GameDetailsPage";
 export { default as ViewStoreAll } from "./store/StoreAllPage";
 export { default as ViewStoreDetails } from "./store/StoreDetailsPage";
-export { default as ViewCreatorAll } from "./creator/CreatorAllPage";
+// export { default as ViewCreatorAll } from "./creator/SearchPage";

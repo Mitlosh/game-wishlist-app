@@ -17,16 +17,7 @@ const GameItem = ({ gameItem }) => {
       <div className="card-bottom">
         <h4 className="text-white text-uppercase card-title">{gameItem?.name}</h4>
         <div className="block-wrap d-flex align-items-end justify-content-between">
-          <div className="details-group">
-            <div className="details-item d-flex align-items-center">
-              <p className="details-item-name fw-6">Release Date: &nbsp;</p>
-              <p className="details-item-value">{gameItem?.released} </p>
-            </div>
-            <div className="details-item d-flex align-items-center">
-              <p className="details-item-name fw-6">Updated: &nbsp;</p>
-              <p className="details-item-value">{gameItem?.updated} </p>
-            </div>
-          </div>
+          <button className="card-button text-uppercase">Add to list</button>
           <Link to={`/games/${gameItem?.id}`} className="card-button text-uppercase">
             see more
           </Link>
