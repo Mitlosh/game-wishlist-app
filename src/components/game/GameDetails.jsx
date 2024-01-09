@@ -4,7 +4,6 @@ import { FaGlobe } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { StoreItem } from "../store";
 
 const GameDetails = ({ gameData }) => {
   let platforms = gameData?.platforms?.map((platform) => platform.platform.name);
@@ -115,11 +114,7 @@ const GameDetails = ({ gameData }) => {
         </TabPanel>
         <TabPanel>
           <h3 className="text-white mb-3">Available Stores</h3>
-          <div className="card-list">
-            {gameData?.stores?.map((item) => (
-              <StoreItem key={item?.store?.id} storeItem={item?.store} />
-            ))}
-          </div>
+          <div className="card-list"></div>
         </TabPanel>
       </Tabs>
     </GameDetailsWrapper>

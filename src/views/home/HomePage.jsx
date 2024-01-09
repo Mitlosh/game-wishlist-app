@@ -1,13 +1,10 @@
 import styled from "styled-components";
-import { ImageSlider, Preloader, Title } from "../../components/common";
+import { ImageSlider } from "../../components/common";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllGames, selectAllGamesStatus } from "../../redux/store/gameSlice";
 import { useEffect } from "react";
 import { fetchAsyncGames } from "../../redux/utils/gameUtils";
-import { STATUS } from "../../utils/status";
-import { Link } from "react-router-dom";
-import GameList from "../../components/game/GameList";
-import SearchPage from "../../components/common/SearchPage";
+import SearchPage from "../../components/search/SearchPage";
 
 const HomePage = () => {
   const dispatch = useDispatch();

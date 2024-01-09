@@ -3,8 +3,22 @@ import { Link } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
 import PropTypes from "prop-types";
 import { StarRating } from "../common";
+import { useDispatch, useSelector } from "react-redux";
+import { addGame, removeGame } from "../../redux/store/playlistSlice";
 
 const GameItem = ({ gameItem }) => {
+  const dispatch = useDispatch();
+  const gamesArray = useSelector((state) => state.playlist.playlist);
+
+  const addToPlaylist = (game) => {
+    const selectedGame = gamesArray.find((item) => item.id === game.id);
+    if (!selectedGame) {
+      dispatch(addGame(game));
+    } else {
+      alert("Game is already in playlist");
+    }
+  };
+
   return (
     <GameItemWrapper className="card">
       <div className="card-top img-fit-cover">
@@ -17,7 +31,12 @@ const GameItem = ({ gameItem }) => {
       <div className="card-bottom">
         <h4 className="text-white text-uppercase card-title">{gameItem?.name}</h4>
         <div className="block-wrap d-flex align-items-end justify-content-between">
-          <button className="card-button text-uppercase">Add to list</button>
+          <button onClick={() => addToPlaylist(gameItem)} className="card-button text-uppercase">
+            Add to list
+          </button>
+          <button onClick={() => dispatch(removeGame(gameItem))} className="card-button text-uppercase">
+            Remove
+          </button>
           <Link to={`/games/${gameItem?.id}`} className="card-button text-uppercase">
             see more
           </Link>

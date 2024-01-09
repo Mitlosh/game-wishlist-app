@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { AiOutlineMenu } from "react-icons/ai";
-import { GenreItem } from "../genre";
 
 const Tabs = ({ data }) => {
   const [activeTab, setActiveTab] = useState(data[0]); // using first genre as the default tab

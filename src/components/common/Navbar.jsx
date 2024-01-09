@@ -35,13 +35,13 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/creators" className="nav-link">
-                  creators
+                <Link to="/playlist" className="nav-link">
+                  Playlist
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/stores" className="nav-link">
-                  stores
+                <Link to="/tierlist" className="nav-link">
+                  Tierlist
                 </Link>
               </li>
               <li className="nav-item">
