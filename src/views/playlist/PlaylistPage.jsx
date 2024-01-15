@@ -1,34 +1,68 @@
+import React, { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { GameItem } from "../../components/game";
+import GameItem from "../../components/game/GameItem";
 import { Title } from "../../components/common";
+import styled from "styled-components";
+import { removeGame, updatePlaylist } from "../../redux/store/playlistSlice";
 
 const PlaylistPage = () => {
   const dispatch = useDispatch();
-  const playlist = useSelector((state) => state.playlist);
-  console.log(playlist);
+  const gamesArray = useSelector((state) => state.playlist.playlist);
+  const [games, setGames] = useState(gamesArray);
+
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+
+    const items = Array.from(gamesArray);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    // setGames(items);
+    dispatch(updatePlaylist(items));
+  }
 
   return (
-    <PlaylistPageWrapper>
-      <section className="pl-details">
-        <Title titleName={{ firstText: "playlist", secondText: "games" }} />
-        <div className="container card-list">
-          {playlist.playlist.map((item) => (
-            <GameItem key={item.id} gameItem={item} />
-          ))}
-        </div>
-      </section>
-    </PlaylistPageWrapper>
+    <PlaylistWrapper>
+      <div className="container">
+        <Title titleName={{ firstText: "top popular", secondText: "games" }} />
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="gamesArray">
+            {(provided) => (
+              <ul className="games" {...provided.droppableProps} ref={provided.innerRef}>
+                {gamesArray.map((game, index) => {
+                  return (
+                    <Draggable key={game.id} draggableId={game.id.toString()} index={index}>
+                      {(provided) => (
+                        <li
+                          className="games-item"
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}>
+                          <GameItem key={game.id} gameItem={game} isGrid={false} />
+                        </li>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
+    </PlaylistWrapper>
   );
 };
 
 export default PlaylistPage;
 
-const PlaylistPageWrapper = styled.div`
-  .pl-details {
-    background-color: var(--clr-violet-dark-active);
-    min-height: 100vh;
-    padding-top: 55px;
-    padding-bottom: 55px;
+const PlaylistWrapper = styled.div`
+  background-color: var(--clr-violet-dark-active);
+  padding: 50px 0;
+
+  .games-item {
+    margin: 0 200px;
+    margin-bottom: 1em;
   }
 `;

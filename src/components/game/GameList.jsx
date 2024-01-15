@@ -7,7 +7,7 @@ const GameList = ({ games, sliceValue = games.length }) => {
     <GameListWrapper>
       <div className="card-list">
         {games?.slice(0, sliceValue).map((item) => (
-          <GameItem key={item.id} gameItem={item} />
+          <GameItem key={item.id} gameItem={item} isGrid={true} />
         ))}
       </div>
     </GameListWrapper>
@@ -16,9 +16,9 @@ const GameList = ({ games, sliceValue = games.length }) => {
 
 export default GameList;
 
-GameList.propTypes = {
-  games: PropTypes.array,
-  sliceValue: PropTypes.number,
-};
+// GameList.propTypes = {
+//   games: PropTypes.array,
+//   sliceValue: PropTypes.number,
+// };
 
 const GameListWrapper = styled.div``;
