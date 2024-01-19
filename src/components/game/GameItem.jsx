@@ -14,7 +14,7 @@ const getDate = () => {
   const month = today.getMonth() + 1;
   const year = today.getFullYear();
   const date = today.getDate();
-  return `${month}.${date}.${year}`;
+  return `${date}.${month}.${year}`;
 };
 
 const GameItem = ({ gameItem, isGrid }) => {
