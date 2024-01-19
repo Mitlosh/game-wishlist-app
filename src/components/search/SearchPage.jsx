@@ -18,7 +18,8 @@ const SearchPage = ({ games }) => {
     if (title !== "") {
       const response = await fetch(`${API_URL}&search=${title}`);
       const data = await response.json();
-      setSearchedGames(data.results);
+      const sortedGames = data.results.sort((a, b) => b.ratings_count - a.ratings_count);
+      setSearchedGames(sortedGames);
       numResults = parseInt(data.count);
     }
     setLoading(false);
