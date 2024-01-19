@@ -33,7 +33,7 @@ const TitleWrapper = styled.div`
     position: relative;
 
     span {
-      color: var(--clr-pink-normal);
+      color: var(--secondary);
     }
   }
 

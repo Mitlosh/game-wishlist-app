@@ -104,9 +104,9 @@ const GameDetails = ({ gameData }) => {
               return (
                 <div className="platform-item text-white" key={item?.platform?.id}>
                   <p className="platform-name mb-2">{item?.platform?.name}</p>
-                  <div className="platform-img-wrapper img-fit-cover">
+                  {/* <div className="platform-img-wrapper img-fit-cover">
                     <img src={item?.platform?.image_background} className="platform-img" />
-                  </div>
+                  </div> */}
                 </div>
               );
             })}

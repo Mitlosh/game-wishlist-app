@@ -32,7 +32,7 @@ export default HomePage;
 
 const HomeWrapper = styled.div`
   .sc-popular {
-    background-color: var(--clr-violet-dark-active);
+    background: linear-gradient(0deg, var(--clr-violet-dark-active), var(--clr-violet-light));
     .section-btn {
       margin-top: 60px;
     }

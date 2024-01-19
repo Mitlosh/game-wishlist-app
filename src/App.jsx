@@ -1,4 +1,3 @@
-import axios from "axios";
 import "./styles/main.scss";
 import { Provider } from "react-redux";
 import AppRouter from "./routers/AppRouter";

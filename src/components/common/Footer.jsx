@@ -185,7 +185,7 @@ const FooterWrapper = styled.footer`
       }
 
       &-field {
-        background: #0c0a24;
+        background: var(--clr-violet-dark-active);
         padding-left: 22px;
         padding-right: 22px;
         color: var(--clr-white);
@@ -209,7 +209,7 @@ const FooterWrapper = styled.footer`
   }
 
   .footer-bottom {
-    background: #04020e;
+    background: var(--clr-violet-dark-active);
     padding: 20px 0;
     &-text {
       font-weight: 500;

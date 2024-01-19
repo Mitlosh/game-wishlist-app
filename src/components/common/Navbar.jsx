@@ -5,11 +5,12 @@ import { BsRssFill, BsSteam, BsTwitch, BsYoutube } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSidebarStatus, setSidebarOff, setSidebarOn } from "../../redux/store/sidebarSlice";
+import { useState } from "react";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const sidebarStatus = useSelector(selectSidebarStatus);
-  console.log(sidebarStatus);
+  const [count, setCount] = useState(0);
 
   return (
     <NavbarWrapper className="d-flex align-items-center">
@@ -40,7 +41,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/tierlist" className="nav-link">
+                <Link to="/tierlist" className=" nav-link" style={{ pointerEvents: count !== 0 ? "" : "none" }}>
                   Tierlist
                 </Link>
               </li>
@@ -85,7 +86,8 @@ export default Navbar;
 
 const NavbarWrapper = styled.div`
   min-height: 78px;
-  background: #090624;
+  background: var(--clr-violet-light);
+  border-bottom: 1px solid var(--clr-violet-darker);
 
   .navbar-brand {
     font-weight: 700;
@@ -108,7 +110,7 @@ const NavbarWrapper = styled.div`
     transition: var(--transition-default);
 
     &:hover {
-      color: var(--clr-pink-normal);
+      color: var(--secondary);
     }
   }
 

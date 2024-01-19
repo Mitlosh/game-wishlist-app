@@ -1,15 +1,13 @@
-import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import GameItem from "../../components/game/GameItem";
 import { Title } from "../../components/common";
 import styled from "styled-components";
-import { removeGame, updatePlaylist } from "../../redux/store/playlistSlice";
+import { updatePlaylist } from "../../redux/store/playlistSlice";
 
 const PlaylistPage = () => {
   const dispatch = useDispatch();
   const gamesArray = useSelector((state) => state.playlist.playlist);
-  const [games, setGames] = useState(gamesArray);
 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
@@ -18,14 +16,13 @@ const PlaylistPage = () => {
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
 
-    // setGames(items);
     dispatch(updatePlaylist(items));
   }
 
   return (
     <PlaylistWrapper>
       <div className="container">
-        <Title titleName={{ firstText: "top popular", secondText: "games" }} />
+        <Title titleName={{ firstText: "wish to", secondText: "play" }} />
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="gamesArray">
             {(provided) => (
@@ -34,13 +31,15 @@ const PlaylistPage = () => {
                   return (
                     <Draggable key={game.id} draggableId={game.id.toString()} index={index}>
                       {(provided) => (
-                        <li
-                          className="games-item"
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}>
-                          <GameItem key={game.id} gameItem={game} isGrid={false} />
-                        </li>
+                        <div>
+                          <li
+                            className="games-item"
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}>
+                            <GameItem key={game.id} gameItem={game} isGrid={false} />
+                          </li>
+                        </div>
                       )}
                     </Draggable>
                   );
@@ -62,7 +61,7 @@ const PlaylistWrapper = styled.div`
   padding: 50px 0;
 
   .games-item {
-    margin: 0 200px;
+    // margin: 0 200px;
     margin-bottom: 1em;
   }
 `;

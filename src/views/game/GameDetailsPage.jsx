@@ -29,7 +29,7 @@ const GameDetailsPage = () => {
       <div
         className="sc-details"
         style={{
-          background: `linear-gradient(0deg, rgba(16, 14, 43, 0.8), rgba(16, 14, 43, 0.8)), url(${game_details_image}) center/cover no-repeat`,
+          background: `linear-gradient(0deg, var(--clr-violet-dark-active), var(--clr-violet-light)), url(${game_details_image}) center/cover no-repeat`,
         }}>
         <div className="container">
           <Breadcrumb dataNameById={gameNameById} />

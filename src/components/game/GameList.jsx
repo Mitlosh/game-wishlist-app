@@ -16,9 +16,9 @@ const GameList = ({ games, sliceValue = games.length }) => {
 
 export default GameList;
 
-// GameList.propTypes = {
-//   games: PropTypes.array,
-//   sliceValue: PropTypes.number,
-// };
+GameList.propTypes = {
+  games: PropTypes.array,
+  sliceValue: PropTypes.number,
+};
 
 const GameListWrapper = styled.div``;
