@@ -17,14 +17,6 @@ const getDate = () => {
   return `${date}.${month}.${year}`;
 };
 
-const getDate = () => {
-  const today = new Date();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-  const date = today.getDate();
-  return `${month}.${date}.${year}`;
-};
-
 const GameItem = ({ gameItem, isGrid }) => {
   const dispatch = useDispatch();
   const gamesArray = useSelector((state) => state.playlist.playlist);
