@@ -19,12 +19,17 @@ const GameAllPage = () => {
   const nextPage = useSelector(selectGamesNextPage);
   const prevPage = useSelector(selectGamesPrevPage);
   const [page, setPage] = useState(1);
+  // const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(fetchAsyncGames(page));
   }, [page]);
 
-  const pageHandler = (pageValue) => setPage(pageValue);
+  const pageHandler = (pageValue) => {
+    setPage(pageValue);
+
+    window.scrollTo(0, 0);
+  };
 
   return (
     <GameAllPageWrapper>
